@@ -5,23 +5,38 @@ import java.util.List;
 
 public class Mazo {
     private ArrayList<Carta> cartas;
-    private final int CARTAS_NUMERO = 9;
-    private final char[] CARTAS_FIGURA = {'A', 'J', 'Q', 'K'};
     
     public Mazo(){
         cartas = new ArrayList<>();
+        generarCartas();
     }
     
     public void generarCartas(){
-        for(Palo p: Palo.values()){
-            for(int i = 1; i <= CARTAS_NUMERO; i++){
-                cartas.add(new CartaNumero(i, p));
-            }
-            for(char i = 0; i < CARTAS_FIGURA.length; i++){
-                cartas.add(new CartaFigura(CARTAS_FIGURA[i], p));
-            }
-        }
+        generarPalos();
+        generarComodines();
+    }
+    
+    public void generarComodines(){
         cartas.addAll(List.of(new Comodin(true), new Comodin(false)));
+    }
+    
+    public void generarCartasNumericas(Palo palo){
+        for(int i = CartaNumero.NUM_MIN; i <= CartaNumero.NUM_MAX; i++){
+            cartas.add(new CartaNumero(i, palo));
+        }
+    }
+    
+    public void generarCartasFigura(Palo palo){
+        for(char letra: CartaFigura.LETRAS){
+            cartas.add(new CartaFigura(letra, palo));
+        }
+    }
+    
+    public void generarPalos(){
+        for(Palo p: Palo.values()){
+            generarCartasNumericas(p);
+            generarCartasFigura(p);
+        }
     }
     
     public void voltearCartas(){
@@ -30,6 +45,12 @@ public class Mazo {
         }
     }
 
+    public void mostrarCartas(){
+        for(Carta c: cartas){
+            System.out.println(c);
+        }
+    }
+    
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

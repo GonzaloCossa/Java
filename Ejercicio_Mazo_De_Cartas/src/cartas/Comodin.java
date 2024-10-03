@@ -1,15 +1,15 @@
 package cartas;
 
-public class Comodin extends Carta {
-    // true: Blanco false: Negro
-    private boolean blancoNegro;
+public final class Comodin extends Carta {
     
-    public Comodin(boolean blancoNegro){
-        this.blancoNegro = blancoNegro;
+    private boolean coloreado;
+    
+    public Comodin(boolean coloreado){
+        this.coloreado = coloreado;
     }
 
     @Override
     public String toString() {
-        return super.toString() + "\nComodin: " + (blancoNegro ? "Negro" : "Blanco") + "\n";
+        return super.toString() + "\nComodin: " + (coloreado ? "Negro" : "Blanco") + "\n";
     }   
 }

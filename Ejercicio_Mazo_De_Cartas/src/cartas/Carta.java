@@ -1,6 +1,6 @@
 package cartas;
 
-public class Carta {
+public abstract class Carta {
     private boolean visible;
     
     public Carta(){
@@ -11,7 +11,7 @@ public class Carta {
         this.visible = !visible;
     }
     
-    public boolean getEstado(){
+    protected boolean getEstado(){
         return visible;
     }
     

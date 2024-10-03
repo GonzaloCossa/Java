@@ -1,6 +1,6 @@
 package cartas;
 
-public class CartaPalo extends Carta {
+public abstract class CartaPalo extends Carta {
     private Palo palo;
     
     public CartaPalo(Palo palo){
