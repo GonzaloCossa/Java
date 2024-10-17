@@ -39,7 +39,7 @@ public class Mazo {
         }
     }
     
-    public void voltearCartas(){
+    public void voltearMazo(){
         for(Carta c: cartas){
             c.voltear();
         }
